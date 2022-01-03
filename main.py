@@ -23,6 +23,11 @@ async def status_update():
             price = GetPrice()
         except:
             print("Something is wrong.")
+            try:
+                price = price
+            except:
+                price = "0.136 USDT"
+
         await client.get_guild().me.edit(nick=price) # Put Guild_id here
         print("Price Updated")
         await asyncio.sleep(5)
