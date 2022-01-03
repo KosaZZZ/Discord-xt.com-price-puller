@@ -19,9 +19,11 @@ async def on_ready():
 
 async def status_update():
     while True:
-        price = GetPrice()
-
-        await client.get_guild(  ).me.edit(nick=price) # Put Guild_id here
+        try:
+            price = GetPrice()
+        except:
+            print("Something is wrong.")
+        await client.get_guild().me.edit(nick=price) # Put Guild_id here
         print("Price Updated")
         await asyncio.sleep(5)
 
